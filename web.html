@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coffee Bliss Cafe</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93')
+      center/cover no-repeat;
+      height: 100vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      font-weight: bold;
+      margin-bottom: 40px;
+      color: #6f4e37;
+    }
+
+    .menu-card {
+      transition: 0.3s;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .about-section {
+      background: #f8f5f2;
+    }
+
+    footer {
+      background: #212529;
+      color: white;
+      padding: 20px 0;
+    }
+
+    .btn-coffee {
+      background-color: #6f4e37;
+      color: white;
+      border: none;
+    }
+
+    .btn-coffee:hover {
+      background-color: #5a3d2b;
+      color: white;
+    }
+
+    .navbar {
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .alert-box {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">☕ Coffee Bliss</a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+
+          <li class="nav-item">
+            <a class="nav-link active" href="#home">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#menu">Menu</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <h1 class="display-3 fw-bold">Welcome to Coffee Bliss</h1>
+
+      <p class="lead">
+        Fresh Coffee • Delicious Snacks • Cozy Atmosphere
+      </p>
+
+      <!-- Working Button -->
+      <a href="#menu" class="btn btn-coffee btn-lg mt-3">
+        Explore Menu
+      </a>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <section id="menu" class="py-5">
+    <div class="container">
+      <h2 class="text-center section-title">Our Menu</h2>
+
+      <div class="row g-4">
+
+        <!-- Card 1 -->
+        <div class="col-md-4">
+          <div class="card menu-card h-100">
+
+            <img
+              src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085"
+              class="card-img-top"
+              alt="Espresso"
+            />
+
+            <div class="card-body text-center">
+              <h5 class="card-title">Espresso</h5>
+
+              <p class="card-text">
+                Strong and rich espresso shot made from premium beans.
+              </p>
+
+              <h6>₹120</h6>
+
+              <!-- Working Order Button -->
+              <button
+                class="btn btn-coffee mt-2"
+                onclick="orderItem('Espresso')"
+              >
+                Order Now
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-4">
+          <div class="card menu-card h-100">
+
+            <img
+              src="https://images.unsplash.com/photo-1517701604599-bb29b565090c"
+              class="card-img-top"
+              alt="Cappuccino"
+            />
+
+            <div class="card-body text-center">
+              <h5 class="card-title">Cappuccino</h5>
+
+              <p class="card-text">
+                Creamy milk foam with perfectly brewed coffee.
+              </p>
+
+              <h6>₹180</h6>
+
+              <button
+                class="btn btn-coffee mt-2"
+                onclick="orderItem('Cappuccino')"
+              >
+                Order Now
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-4">
+          <div class="card menu-card h-100">
+
+            <img
+              src="https://images.unsplash.com/photo-1504674900247-0877df9cc836"
+              class="card-img-top"
+              alt="Sandwich"
+            />
+
+            <div class="card-body text-center">
+              <h5 class="card-title">Veg Sandwich</h5>
+
+              <p class="card-text">
+                Crispy toasted sandwich with fresh vegetables and cheese.
+              </p>
+
+              <h6>₹150</h6>
+
+              <button
+                class="btn btn-coffee mt-2"
+                onclick="orderItem('Veg Sandwich')"
+              >
+                Order Now
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about-section py-5">
+    <div class="container">
+
+      <div class="row align-items-center">
+
+        <div class="col-md-6">
+          <img
+            src="https://images.unsplash.com/photo-1521017432531-fbd92d768814"
+            class="img-fluid rounded shadow"
+            alt="Cafe"
+          />
+        </div>
+
+        <div class="col-md-6">
+          <h2 class="section-title">About Us</h2>
+
+          <p>
+            Coffee Bliss is a modern cafe offering handcrafted coffee,
+            fresh bakery items, and a relaxing atmosphere.
+          </p>
+
+          <p>
+            We serve happiness in every cup with high-quality ingredients
+            and warm hospitality.
+          </p>
+
+          <!-- Working Visit Button -->
+          <a href="#contact" class="btn btn-coffee">
+            Visit Us
+          </a>
+        </div>
+
+      </div>
+    </div>
+    <!-- About Section -->
+<section id="about" class="about-section py-5">
+  <div class="container">
+
+    <!-- Heading -->
+    <div class="text-center mb-5">
+      <h2 class="section-title">About Coffee Bliss</h2>
+
+      <p class="lead text-muted">
+        Where every cup tells a story and every visit feels like home.
+      </p>
+    </div>
+
+    <!-- Main About Content -->
+    <div class="row align-items-center">
+
+      <!-- Image -->
+      <div class="col-lg-6 mb-4">
+        <img
+          src="https://images.unsplash.com/photo-1521017432531-fbd92d768814"
+          class="img-fluid rounded shadow-lg"
+          alt="Cafe Interior"
+        />
+      </div>
+
+      <!-- Text -->
+      <div class="col-lg-6">
+
+        <h3 class="fw-bold mb-3">
+          Welcome to Coffee Bliss ☕
+        </h3>
+
+        <p>
+          Coffee Bliss is more than just a café — it's a warm and relaxing
+          place where friends meet, students study, professionals work,
+          and coffee lovers enjoy handcrafted beverages made with passion.
+        </p>
+
+        <p>
+          Since our opening, we have focused on delivering premium coffee,
+          fresh bakery items, delicious snacks, and unforgettable customer
+          experiences. Every ingredient is carefully selected to ensure
+          the highest quality and taste.
+        </p>
+
+        <p>
+          Our cozy interiors, soft music, free Wi-Fi, and comfortable seating
+          make Coffee Bliss the perfect place to relax, work remotely,
+          or spend quality time with loved ones.
+        </p>
+
+        <div class="row mt-4">
+
+          <div class="col-6 mb-3">
+            <div class="p-3 bg-white rounded shadow-sm text-center">
+              <h4 class="fw-bold text-brown">10K+</h4>
+              <p class="mb-0">Happy Customers</p>
+            </div>
+          </div>
+
+          <div class="col-6 mb-3">
+            <div class="p-3 bg-white rounded shadow-sm text-center">
+              <h4 class="fw-bold text-brown">25+</h4>
+              <p class="mb-0">Coffee Varieties</p>
+            </div>
+          </div>
+
+          <div class="col-6 mb-3">
+            <div class="p-3 bg-white rounded shadow-sm text-center">
+              <h4 class="fw-bold text-brown">15+</h4>
+              <p class="mb-0">Expert Baristas</p>
+            </div>
+          </div>
+
+          <div class="col-6 mb-3">
+            <div class="p-3 bg-white rounded shadow-sm text-center">
+              <h4 class="fw-bold text-brown">5★</h4>
+              <p class="mb-0">Customer Rating</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Contact Section -->
+<section id="contact" class="py-5 bg-light">
+  <div class="container">
+
+    <!-- Heading -->
+    <div class="text-center mb-5">
+      <h2 class="section-title">Contact Us</h2>
+
+      <p class="lead text-muted">
+        We'd love to hear from you. Visit us, call us,
+        or send us a message anytime.
+      </p>
+    </div>
+
+    <div class="row g-5">
+
+      <!-- Left Side -->
+      <div class="col-lg-5">
+
+        <!-- Contact Info -->
+        <div class="card border-0 shadow-lg p-4 h-100">
+
+          <h3 class="fw-bold mb-4">
+            Get In Touch ☕
+          </h3>
+
+          <div class="mb-4">
+            <h5>📍 Address</h5>
+            <p class="text-muted">
+              123 MG Road, Bengaluru, Karnataka, India
+            </p>
+          </div>
+
+          <div class="mb-4">
+            <h5>📞 Phone</h5>
+            <p class="text-muted">
+              +91 98765 43210
+            </p>
+          </div>
+
+          <div class="mb-4">
+            <h5>✉ Email</h5>
+            <p class="text-muted">
+              hello@coffeebliss.com
+            </p>
+          </div>
+
+          <div class="mb-4">
+            <h5>🕒 Opening Hours</h5>
+
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between">
+                Monday - Friday
+                <span>8:00 AM - 10:00 PM</span>
+              </li>
+
+              <li class="list-group-item d-flex justify-content-between">
+                Saturday
+                <span>9:00 AM - 11:00 PM</span>
+              </li>
+
+              <li class="list-group-item d-flex justify-content-between">
+                Sunday
+                <span>9:00 AM - 9:00 PM</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Social Media -->
+          <div class="mt-4">
+            <h5 class="mb-3">Follow Us</h5>
+
+            <a href="#" class="btn btn-dark me-2">
+              Facebook
+            </a>
+
+            <a href="#" class="btn btn-danger me-2">
+              Instagram
+            </a>
+
+            <a href="#" class="btn btn-primary">
+              Twitter
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Side -->
+      <div class="col-lg-7">
+
+        <div class="card border-0 shadow-lg p-4">
+
+          <h3 class="fw-bold mb-4">
+            Send Us a Message
+          </h3>
+
+          <!-- Success Alert -->
+          <div
+            id="successMessage"
+            class="alert alert-success d-none"
+          >
+            ✅ Your message has been sent successfully!
+          </div>
+
+          <!-- Contact Form -->
+          <form id="contactForm">
+
+            <div class="row">
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label">
+                  Full Name
+                </label>
+
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label">
+                  Email Address
+                </label>
+
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">
+                Phone Number
+              </label>
+
+              <input
+                type="tel"
+                class="form-control"
+                placeholder="Enter phone number"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">
+                Subject
+              </label>
+
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Message subject"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">
+                Your Message
+              </label>
+
+              <textarea
+                class="form-control"
+                rows="6"
+                placeholder="Write your message..."
+                required
+              ></textarea>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex gap-3">
+
+              <button
+                type="submit"
+                class="btn btn-coffee btn-lg"
+              >
+                Send Message
+              </button>
+
+              <button
+                type="reset"
+                class="btn btn-outline-secondary btn-lg"
+              >
+                Reset
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Map -->
+    <div class="mt-5">
+
+      <div class="card border-0 shadow-lg overflow-hidden">
+
+        <iframe
+          src="https://maps.google.com/maps?q=Bengaluru&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          width="100%"
+          height="400"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+<!-- Contact Form JavaScript -->
+<script>
+
+  document
+    .getElementById("contactForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      const success =
+        document.getElementById("successMessage");
+
+      success.classList.remove("d-none");
+
+      this.reset();
+
+      setTimeout(() => {
+        success.classList.add("d-none");
+      }, 4000);
+
+    });
+
+</script>
+
+        <!-- Button -->
+        <a href="#contact" class="btn btn-coffee btn-lg mt-3">
+          Visit Our Cafe
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- Mission Section -->
+    <div class="row mt-5">
+
+      <div class="col-md-4 mb-4">
+        <div class="card border-0 shadow h-100 text-center p-4">
+
+          <div class="display-5 mb-3">🎯</div>
+
+          <h4 class="fw-bold">Our Mission</h4>
+
+          <p>
+            To create a welcoming environment where people can enjoy
+            high-quality coffee, delicious food, and meaningful moments.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card border-0 shadow h-100 text-center p-4">
+
+          <div class="display-5 mb-3">🌱</div>
+
+          <h4 class="fw-bold">Fresh Ingredients</h4>
+
+          <p>
+            We use freshly roasted coffee beans, organic ingredients,
+            and homemade recipes prepared daily with care.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card border-0 shadow h-100 text-center p-4">
+
+          <div class="display-5 mb-3">❤️</div>
+
+          <h4 class="fw-bold">Customer First</h4>
+
+          <p>
+            Every customer is important to us. We aim to provide
+            exceptional service and unforgettable cafe experiences.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-5">
+    <div class="container">
+
+      <h2 class="text-center section-title">Contact Us</h2>
+
+      <div class="row">
+
+        <div class="col-md-6">
+
+          <h5>📍 Address</h5>
+          <p>123 MG Road, Bengaluru, Karnataka</p>
+
+          <h5>📞 Phone</h5>
+          <p>+91 98765 43210</p>
+
+          <h5>✉ Email</h5>
+          <p>hello@coffeebliss.com</p>
+
+        </div>
+
+        <div class="col-md-6">
+
+          <!-- Success Message -->
+          <div
+            id="successMessage"
+            class="alert alert-success alert-box"
+          >
+            Message sent successfully!
+          </div>
+
+          <!-- Working Form -->
+          <form id="contactForm">
+
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Your Name"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Your Email"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <textarea
+                class="form-control"
+                rows="4"
+                placeholder="Your Message"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-coffee">
+              Send Message
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <div class="container">
+      <p class="mb-0">
+        © 2026 Coffee Bliss Cafe | Designed with Bootstrap
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript -->
+  <script>
+
+    // Order Button Function
+    function orderItem(itemName) {
+      alert("✅ Your order for " + itemName + " has been placed!");
+    }
+
+    // Contact Form Function
+    document
+      .getElementById("contactForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        document
+          .getElementById("successMessage")
+          .style.display = "block";
+
+        this.reset();
+      });
+
+  </script>
+
+</body>
+</html>
